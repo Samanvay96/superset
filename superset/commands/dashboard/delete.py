@@ -14,9 +14,10 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+from __future__ import annotations
+
 import logging
 from functools import partial
-from typing import Optional
 
 from flask_babel import lazy_gettext as _
 
@@ -39,7 +40,7 @@ logger = logging.getLogger(__name__)
 
 
 class DeleteEmbeddedDashboardCommand(BaseCommand):
-    def __init__(self, dashboard: Dashboard):
+    def __init__(self, dashboard: Dashboard) -> None:
         self._dashboard = dashboard
 
     @transaction(on_error=partial(on_error, reraise=DashboardDeleteEmbeddedFailedError))
@@ -55,9 +56,9 @@ class DeleteEmbeddedDashboardCommand(BaseCommand):
 
 
 class DeleteDashboardCommand(BaseCommand):
-    def __init__(self, model_ids: list[int]):
+    def __init__(self, model_ids: list[int]) -> None:
         self._model_ids = model_ids
-        self._models: Optional[list[Dashboard]] = None
+        self._models: list[Dashboard] | None = None
 
     @transaction(on_error=partial(on_error, reraise=DashboardDeleteFailedError))
     def run(self) -> None:
