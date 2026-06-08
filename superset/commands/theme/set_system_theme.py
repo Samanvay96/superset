@@ -14,9 +14,10 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+from __future__ import annotations
+
 import logging
 from functools import partial
-from typing import Optional
 
 from sqlalchemy import update
 
@@ -31,9 +32,9 @@ logger = logging.getLogger(__name__)
 
 
 class SetSystemDefaultThemeCommand(BaseCommand):
-    def __init__(self, theme_id: int):
+    def __init__(self, theme_id: int) -> None:
         self._theme_id = theme_id
-        self._theme: Optional[Theme] = None
+        self._theme: Theme | None = None
 
     @transaction(on_error=partial(on_error, reraise=Exception))
     def run(self) -> Theme:
@@ -62,9 +63,9 @@ class SetSystemDefaultThemeCommand(BaseCommand):
 
 
 class SetSystemDarkThemeCommand(BaseCommand):
-    def __init__(self, theme_id: int):
+    def __init__(self, theme_id: int) -> None:
         self._theme_id = theme_id
-        self._theme: Optional[Theme] = None
+        self._theme: Theme | None = None
 
     @transaction(on_error=partial(on_error, reraise=Exception))
     def run(self) -> Theme:
