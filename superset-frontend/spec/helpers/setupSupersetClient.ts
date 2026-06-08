@@ -17,11 +17,9 @@
  * under the License.
  */
 import fetchMock from 'fetch-mock';
-// https://jestjs.io/docs/jest-object#jestmockmodulename-factory-options
-// in order to mock modules in test case, so avoid absolute import module
-import { SupersetClient } from '../../packages/superset-ui-core/src/connection';
+import { SupersetClient } from '@superset-ui/core';
 
-export default function setupSupersetClient() {
+export default function setupSupersetClient(): void {
   // The following is needed to mock out SupersetClient requests
   // including CSRF authentication and initialization
   global.FormData = window.FormData; // used by SupersetClient

@@ -296,6 +296,7 @@ module = [
     "superset.commands.security.update",
     "superset.commands.security.create",
     "superset.semantic_layers.api",
+    "tests.unit_tests.semantic_layers.mapper_test",
 ]
 warn_unused_ignores = false
 
