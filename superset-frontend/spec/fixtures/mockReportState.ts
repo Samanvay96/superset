@@ -17,9 +17,10 @@
  * under the License.
  */
 import { user } from 'src/SqlLab/fixtures';
+import type { ReportObject } from 'src/features/reports/types';
 import dashboardInfo from './mockDashboardInfo';
 
-export default {
+const mockReportState: Partial<ReportObject> = {
   active: true,
   creation_method: 'dashboards',
   crontab: '0 12 * * 1',
@@ -30,9 +31,13 @@ export default {
     {
       recipient_config_json: {
         target: user.email,
+        ccTarget: '',
+        bccTarget: '',
       },
       type: 'Email',
     },
   ],
   type: 'Report',
 };
+
+export default mockReportState;
