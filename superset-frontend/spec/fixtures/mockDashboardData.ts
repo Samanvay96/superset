@@ -18,11 +18,21 @@
  */
 import { dashboardLayout } from './mockDashboardLayout';
 
+interface MockDashboardData {
+  css: string;
+  dashboard_title: string;
+  default_filters: Record<string, unknown>;
+  expanded_slices: Record<string, unknown>;
+  positions: typeof dashboardLayout.present;
+}
+
 // mock the object to be posted to save_dash or copy_dash API
-export default {
+const mockDashboardData: MockDashboardData = {
   css: '',
   dashboard_title: 'Test 1',
   default_filters: {},
   expanded_slices: {},
   positions: dashboardLayout.present,
 };
+
+export default mockDashboardData;
