@@ -17,8 +17,9 @@
  * under the License.
  */
 import { FilterBarOrientation } from 'src/dashboard/types';
+import type Owner from 'src/types/Owner';
 
-export default {
+const mockDashboardInfo = {
   id: 1234,
   slug: 'dashboardSlug',
   metadata: {
@@ -26,9 +27,9 @@ export default {
       {
         id: 'DefaultsID',
         filterType: 'filter_select',
-        chartsInScope: [],
-        targets: [{}],
-        cascadeParentIds: [],
+        chartsInScope: [] as number[],
+        targets: [{}] as Record<string, unknown>[],
+        cascadeParentIds: [] as string[],
       },
     ],
   },
@@ -37,14 +38,14 @@ export default {
     id: 3,
     first_name: 'John',
     last_name: 'Doe',
-  },
+  } satisfies Owner,
   created_on_delta_humanized: '10 days ago',
   created_by: {
     id: 2,
     first_name: 'Kay',
     last_name: 'Mon',
-  },
-  owners: [{ first_name: 'John', last_name: 'Doe', id: 1 }],
+  } satisfies Owner,
+  owners: [{ first_name: 'John', last_name: 'Doe', id: 1 }] satisfies Owner[],
   userId: 'mock_user_id',
   dash_edit_perm: true,
   dash_save_perm: true,
@@ -53,3 +54,5 @@ export default {
   },
   filterBarOrientation: FilterBarOrientation.Vertical,
 };
+
+export default mockDashboardInfo;
